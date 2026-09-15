@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Form</title>
+</head>
+<script>
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validate() {
+        var hmail = document.getElementById("email").value;
+        var frm = document.getElementById("frm");
+        var hn = document.getElementById("phno").value;
+        if (hn.length == 10) {
+            if (isValidEmail(hmail)) {
+                frm.submit();
+            } else {
+                alert("Invalid email ID");
+            }
+        } else {
+            alert("Invalid phone number");
+        }
+    }
+</script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #35b0e9;
+        color: #023e73;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f3f3f3;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: #023e73;
+    }
+
+    h2 {
+        color: white;
+        background-color: #023e73;
+        text-align: center;
+        padding: 20px;
+        margin-top: 0%;
+        border-radius: 5px;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        box-sizing: border-box;
+        background-color: #d6dfe7;
+        border: none;
+        border-radius: 5px;
+        color: #023e73;
+    }
+
+    .sbtn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        user-select: none;
+        margin-top: 10px;
+    }
+
+    .sbtn:hover {
+        background-color: #0056b3;
+    }
+
+    .sbtn:active {
+        transform: scale(0.95);
+    }
+</style>
+
+<body>
+    <form action="patientRegister" method="post" id="frm">
+        {% csrf_token %}
+        <h2>User Registration: </h2>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li style="color: red;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <label for="adhno">Aadhaar Number:</label>
+        <input type="number" id="adhno" name="adhno" maxlength="12">
+
+        <label for="pname">Name:</label>
+        <input type="text" id="pname" name="pname" maxlength="500">
+
+        <label for="pincode">Pincode:</label>
+        <input type="number" id="pincode" name="pincode" maxlength="6">
+
+        <label for="state">State:</label>
+        <select id="state" name="state">
+            <option value="">Select State</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Puducherry">Puducherry</option>
+        </select>
+
+        <label for="dist">District:</label>
+        <input type="text" id="dist" name="dist" maxlength="60">
+
+        <label for="Address">Address:</label>
+        <input type="text" id="Address" name="Address" maxlength="100">
+
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" name="gender" maxlength="20">
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob">
+
+        <label for="diab">Diabetes:</label>
+        <input type="text" id="diab" name="diab" maxlength="10">
+
+        <label for="bp">Blood Pressure:</label>
+        <input type="text" id="bp" name="bp" maxlength="10">
+
+        <label for="weight">Weight:</label>
+        <input type="text" id="weight" name="weight" maxlength="10">
+
+        <label for="height">Height:</label>
+        <input type="text" id="height" name="height" maxlength="10">
+
+        <label for="phno">Phone Number:</label>
+        <input type="text" id="phno" name="phno" maxlength="10">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="100">
+
+        <label for="pswd">Password:</label>
+        <input type="password" id="pswd" name="pswd" maxlength="500">
+
+        <label for="cpswd">Confirm Password:</label>
+        <input type="password" id="cpswd" name="cpswd" maxlength="500">
+
+        <div class="sbtn" onclick="validate()">Submit</div>
+    </form>
+</body>
+
+</html>

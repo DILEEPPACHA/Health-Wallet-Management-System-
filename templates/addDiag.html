@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Center Registration</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to top right, #ffffff, #00fff3, #007bff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            background-color: #023e73;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #023e73;
+        }
+
+        input,
+        select {
+            background-color: #e3f2fd;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" onclick="window.history.back()" style="margin:10px;padding:8px 16px;border-radius:4px;border:1px solid #ccc;background-color:#f8f9fa;cursor:pointer;">← Back</button>
+    <form action="addDiag" method="post" class="form-container" onsubmit="return validate()">
+        {% csrf_token %}
+        <h2>Diagnostic Center Registration</h2>
+        
+        <label for="hid">Diagnostic Center ID:</label>
+        <input type="text" id="hid" name="did" required>
+
+        <label for="hnumber">Diagnostic Center Number:</label>
+        <input type="number" id="hnumber" name="dnumber" required>
+
+        <label for="hmail">Email:</label>
+        <input type="email" id="hmail" name="dmail" required>
+
+        <label for="hname">Diagnostic Center Name:</label>
+        <input type="text" id="hname" name="dname" required>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required>
+
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+            <option value="">Select State</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Puducherry">Puducherry</option>
+        </select>
+
+        <label for="dist">District:</label>
+        <input type="text" id="dist" name="dist" required>
+
+        <label for="Address">Address:</label>
+        <input type="text" id="Address" name="Address" required>
+
+        <label for="speciality">Speciality:</label>
+        <input type="text" id="speciality" name="speciality" required>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</body>
+
+</html>

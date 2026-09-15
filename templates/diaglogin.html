@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Diagnostic Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #141e30, #243b55);
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-container img {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .login-container h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #38d39f;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #32be8f;
+        }
+
+        .link {
+            margin-top: 1rem;
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .link:hover {
+            color: #38d39f;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <button type="button" onclick="window.history.back()" style="margin-bottom:10px;padding:4px 10px;border-radius:4px;border:1px solid #ccc;background-color:#f8f9fa;cursor:pointer;align-self:flex-start;">←</button>
+        <img src="https://www.citypng.com/public/uploads/preview/-11589162823tvqzrvujcs.png" alt="Logo">
+        <h2>Welcome</h2>
+        <form action="diaglogin" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="did" placeholder="Diagnostic Center ID" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="dpswd" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <a href="/setDpswd" class="link">Change Password</a>
+    </div>
+</body>
+</html>
